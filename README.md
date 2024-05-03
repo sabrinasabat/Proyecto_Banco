@@ -15,6 +15,7 @@ Cuenta Corriente:
 
 Cuenta de Estudiante: 
 - Esta cuenta no tiene comisiones, pero tiene ciertas condiciones especiales: 
-  - El estudiante debe actualizar sus datos periódicamente para verificar que sigue estudiando. 
+  - El estudiante debe actualizar sus datos periódicamente para verificar que sigue estudiando.
+  - Si el estudiante ha excedido el décimo período, lo que indica múltiples reprobaciones, se cerrará su cuenta de estudiante y se desactivarán sus beneficios. 
   - Solo se pueden realizar retiros de un máximo de 15€ al día. 
   - Al finalizar los estudios, la cuenta se cierra, pero en este caso se permite retirar todo el saldo, incluso si supiera los 15€. 
