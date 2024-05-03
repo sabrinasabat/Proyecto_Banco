@@ -32,9 +32,13 @@ public class CuentaCorriente extends CuentaBancaria{
     @Override
     public void estadoActual(){
         System.out.println("------------------------------------------------------");
-        System.out.println("Titular de la Cuenta: "+ this.getTitularCuenta());
-        System.out.println("Fecha de Apertura de la Cuenta: "+ this.getFechaApertura());
-        System.out.println("Sueldo actual de la cuenta: " + this.getSueldo());
+        System.out.println("===           Estado de la cuenta:           ===");
+        System.out.println("|   Número de la cuenta: " + this.getNumCuenta()+"                 |");
+        System.out.println("|   Titular de la Cuenta: "+ this.getTitularCuenta()+"              |");
+        System.out.println("|   Fecha de Apertura de la Cuenta: "+ this.getFechaApertura()+"  |");
+        System.out.println("|   Sueldo: "+ this.getSueldo()+"€.                            |");
+        System.out.println("|_______________________________________________|");
+
     }
 
     @Override
@@ -42,7 +46,7 @@ public class CuentaCorriente extends CuentaBancaria{
         if(this.getStatus()){
             this.setSueldo(this.getSueldo()+valorCash);
             System.out.println("------------------------------------------------------");
-            System.out.println("Dinero ingresado en la Cuenta Ahorro de "+ this.getTitularCuenta()+".");
+            System.out.println("Dinero ingresado en la Cuenta Corriente de "+ this.getTitularCuenta()+".");
             System.out.println("Sueldo actual: "+this.getSueldo());
         } else {
             System.out.println("------------------------------------------------------");
@@ -58,7 +62,7 @@ public class CuentaCorriente extends CuentaBancaria{
             if (this.getSueldo() >= valorCashout) {
                 this.setSueldo(this.getSueldo() - valorCashout);
                 System.out.println("------------------------------------------------------");
-                System.out.println("Dinero sacado de la Cuenta Ahorro de" + this.getTitularCuenta() + ".");
+                System.out.println("Dinero sacado de la Cuenta Corriente de " + this.getTitularCuenta() + ".");
                 System.out.println("Sueldo actual: " + this.getSueldo()+"€.");
                 return valorCashout-tasa;
             }

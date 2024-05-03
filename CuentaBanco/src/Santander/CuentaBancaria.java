@@ -27,6 +27,7 @@ public abstract class CuentaBancaria {
     public abstract void ingresarDinero(float valorCash);
 
     public abstract float sacarDinero(float valorCashout);
+
     // ----------------------------------------------------------------------------------- //
 
     public int getNumCuenta() {

@@ -56,10 +56,14 @@ public class CuentaEstudiante extends CuentaBancaria{
     public void estadoActual(){
         if(getStatus()){
             System.out.println("------------------------------------------------------");
-            System.out.println("Titular de la Cuenta: "+ this.getTitularCuenta());
-            System.out.println("Fecha de Apertura de la Cuenta: "+ this.getFechaApertura());
-            System.out.println("Sueldo actual de la cuenta: "+this.getSueldo());
+            System.out.println("===           Estado de la cuenta:          ===");
+            System.out.println("|   Número de la cuenta: " + this.getNumCuenta()+"                 |");
+            System.out.println("|   Titular de la Cuenta: "+ this.getTitularCuenta()+"               |");
+            System.out.println("|   Fecha de Apertura de la Cuenta: "+ this.getFechaApertura()+"  |");
+            System.out.println("|   Sueldo: "+ this.getSueldo()+"€.                             |");
+            System.out.println("|_______________________________________________|");
         } else {
+            System.out.println("------------------------------------------------------");
             System.out.println("¡Has ultrapasado el tiempo limite para tener una cuenta Universitária!");
             System.out.println("Cuantía restante en la cuenta: "+ getSueldo()+"€.");
         }
@@ -70,7 +74,7 @@ public class CuentaEstudiante extends CuentaBancaria{
         if(this.getStatus()){
             this.setSueldo(this.getSueldo()+valorCash);
             System.out.println("------------------------------------------------------");
-            System.out.println("Dinero ingresado en la Cuenta Ahorro de "+ this.getTitularCuenta()+".");
+            System.out.println("Dinero ingresado en la Cuenta Estudiante de "+ this.getTitularCuenta()+".");
             System.out.println("Sueldo actual: "+this.getSueldo());
         } else {
             System.out.println("------------------------------------------------------");
@@ -85,7 +89,7 @@ public class CuentaEstudiante extends CuentaBancaria{
             if (this.getSueldo() >= valorCashout && valorCashout <= 15) {
                 this.setSueldo(this.getSueldo() - valorCashout);
                 System.out.println("------------------------------------------------------");
-                System.out.println("Dinero sacado de la Cuenta Ahorro de" + this.getTitularCuenta() + ".");
+                System.out.println("Dinero sacado de la Cuenta Estudiante de " + this.getTitularCuenta() + ".");
                 System.out.println("Sueldo actual: " + this.getSueldo()+"€.");
                 return valorCashout;
             } else if (valorCashout>this.getSueldo()) {
@@ -107,12 +111,13 @@ public class CuentaEstudiante extends CuentaBancaria{
         return 0;
     }
 
-    public void actualizarCadastro(String nombreUniversidad, String fechaInicio, String curso, int periodo, boolean concluido){
-        if(getPeriodo()>10) {
+    public void actualizarCadastro(String nombreUniversidad, String fechaInicio, String curso, int nuevoPeriodo, boolean concluido){
+        if(nuevoPeriodo>=11) {
             setStatus(false);
             System.out.println("------------------------------------------------------");
             System.out.println("¡Has ultrapasado el tiempo limite para tener una cuenta Universitária!");
             System.out.println("Cuantía restante en la cuenta: " + getSueldo()+"€.");
+            System.out.println("Su cuenta ha sido cerrada automáticamente.");
 
         } else if (concluido){
             setStatus(false);
@@ -124,6 +129,13 @@ public class CuentaEstudiante extends CuentaBancaria{
             setFechaInicio(fechaInicio);
             setCurso(curso);
             setPeriodo(periodo);
+            System.out.println("------------------------------------------------------");
+            System.out.println("===     ¡Datos actualizados!     ===");
+            System.out.println("|   Nombre Universidad: "+this.nombreUniversidad+"         |");
+            System.out.println("|   Fecha de inicio: "+this.fechaInicio+"     |");
+            System.out.println("|   Curso: "+this.curso+"               |");
+            System.out.println("|   Periodo: "+this.periodo+"                     |");
+            System.out.println("|___________________________________|");
         }
     }
 }

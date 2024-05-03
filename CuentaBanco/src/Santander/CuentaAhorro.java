@@ -25,11 +25,13 @@ public class CuentaAhorro extends CuentaBancaria{
     public void estadoActual(){
         System.out.println("------------------------------------------------------");
         if(getStatus()){
-            System.out.println("Número de la cuenta: ");
-            System.out.println("Titular de la Cuenta: "+ this.getTitularCuenta());
-            System.out.println("Fecha de Apertura de la Cuenta: "+ this.getFechaApertura());
-            System.out.println("Tasa de rendimiento: "+ this.getRendimiento());
-            System.out.println("Sueldo: "+ this.getSueldo()+"€.");
+            System.out.println("===           Estado de la cuenta:           ===");
+            System.out.println("|   Número de la cuenta: " + this.getNumCuenta()+"                 |");
+            System.out.println("|   Titular de la Cuenta: "+ this.getTitularCuenta()+"                 |");
+            System.out.println("|   Fecha de Apertura de la Cuenta: "+ this.getFechaApertura()+"  |");
+            System.out.println("|   Tasa de rendimiento: "+ this.getRendimiento()+"                   |");
+            System.out.println("|   Sueldo: "+ this.getSueldo()+"€.                            |");
+            System.out.println("|_______________________________________________|");
 
         } else {
             System.out.println("Cuenta inactiva");
@@ -79,7 +81,7 @@ public class CuentaAhorro extends CuentaBancaria{
         float result = 0, sumaValores = 0;
         sumaValores = this.getSueldo() + (valorAdicional);
         result = sumaValores + (this.getRendimiento()*sumaValores);
-        System.out.println(":::::::::::      Total rendimiento SIMULACIÓN: "+ result+"€      ::::::::::");
+        System.out.println("::::::   Total rendimiento SIMULACIÓN: "+ result+"€   :::::");
         return result;
     }
 }
