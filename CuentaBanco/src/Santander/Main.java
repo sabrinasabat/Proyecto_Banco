@@ -41,9 +41,7 @@ public class Main {
         persona3.estadoActual();
 
 
-        System.out.println("---------------------------------------------------");
-
-        persona3.sacarDinero(50);
+        persona3.actualizarCadastro("UIV", "10/10/1990", "Direito", 20, false, "sldjhasdj");
 
 
 
