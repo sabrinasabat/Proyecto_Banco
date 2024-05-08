@@ -1,17 +1,18 @@
 package Santander;
 import java.util.Random;
 public abstract class CuentaBancaria {
-    private int numCuenta;
+    private final int numCuenta;
     private String titularCuenta;
     private String fechaApertura;
     private float sueldo;
     private boolean status;
     private String dniNie;
+    private String empadronamiento;
 
 
     // ----------------------------------------------------------------------------------- //
 
-    protected CuentaBancaria(String titularCuenta, String fechaApertura, int sueldo, String dniNie) {
+    protected CuentaBancaria(String titularCuenta, String fechaApertura, int sueldo, String dniNie, String empadronamiento) {
         Random generator = new Random();
         this.numCuenta = generator.nextInt(899999) + 100000;
         this.titularCuenta = titularCuenta;
@@ -19,6 +20,7 @@ public abstract class CuentaBancaria {
         this.sueldo = sueldo;
         this.dniNie = dniNie;
         this.status = true;
+        this.empadronamiento = empadronamiento;
     }
 
     // ----------------------------------------------------------------------------------- //
@@ -69,6 +71,14 @@ public abstract class CuentaBancaria {
 
     public void setDniNie(String dniNie) {
         this.dniNie = dniNie;
+    }
+
+    public String getEmpadronamiento(){
+        return empadronamiento;
+    }
+
+    public void setEmpadronamiento(){
+        this.empadronamiento = empadronamiento;
     }
 
 }

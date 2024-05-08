@@ -5,8 +5,8 @@ public class CuentaAhorro extends CuentaBancaria{
     protected float rendimiento;
 
     //Constructor ------------------------------------------------------------------------------
-    public CuentaAhorro(String titularCuenta, String fechaApertura, int sueldo, String dniNie) {
-        super(titularCuenta, fechaApertura, sueldo, dniNie);
+    public CuentaAhorro(String titularCuenta, String fechaApertura, int sueldo, String dniNie, String empadronamiento) {
+        super(titularCuenta, fechaApertura, sueldo, dniNie, empadronamiento);
 
         this.rendimiento = 0.03f;
     }

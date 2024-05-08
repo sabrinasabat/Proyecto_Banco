@@ -4,8 +4,8 @@ public class CuentaCorriente extends CuentaBancaria{
 
     private float anuidad;
     private float Factura;
-    public CuentaCorriente(String titularCuenta, String fechaApertura, int sueldo, String dniNie) {
-        super(titularCuenta, fechaApertura, sueldo, dniNie);
+    public CuentaCorriente(String titularCuenta, String fechaApertura, int sueldo, String dniNie, String empadronamiento) {
+        super(titularCuenta, fechaApertura, sueldo, dniNie, empadronamiento);
 
         this.anuidad = 0.05f;
         this.Factura = 250.50f;

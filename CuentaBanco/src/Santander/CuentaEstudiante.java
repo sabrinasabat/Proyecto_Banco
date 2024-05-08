@@ -1,13 +1,13 @@
 package Santander;
 
-public class CuentaEstudiante extends CuentaBancaria{
+public class CuentaEstudiante extends CuentaBancaria implements AlarmaInterfazEstudiante {
     private String nombreUniversidad;
     private String fechaInicio;
     private String curso;
     private int periodo;
     private boolean concluido;
-    public CuentaEstudiante(String titularCuenta, String fechaApertura, int sueldo, String dniNie, String nombreUniversidad, String fechaInicio, String curso, int periodo) {
-        super(titularCuenta, fechaApertura, sueldo, dniNie);
+    public CuentaEstudiante(String titularCuenta, String fechaApertura, int sueldo, String dniNie, String nombreUniversidad, String fechaInicio, String curso, int periodo, String empadronamiento) {
+        super(titularCuenta, fechaApertura, sueldo, dniNie, empadronamiento);
 
         this.nombreUniversidad = nombreUniversidad;
         this.fechaInicio = fechaInicio;
@@ -15,6 +15,10 @@ public class CuentaEstudiante extends CuentaBancaria{
         this.periodo = periodo;
         this.concluido = false;
     }
+
+// ---------------------------------------------------------------------------
+
+
 
     // getters y setters --------------------------------------------------------------------------------
 
@@ -98,9 +102,7 @@ public class CuentaEstudiante extends CuentaBancaria{
                 System.out.println("Sueldo actual: " + this.getSueldo() + "€.");
 
             } else {
-                System.out.println("------------------------------------------------------");
-                System.out.println("¡Limite diario excedido!");
-                System.out.println("Limite diario para cuenta Estudiante: 15€.");
+                AlarmaInterfazEstudiante.limiteCashout();
             }
         } else {
             if(getSueldo()>=valorCashout){
@@ -111,13 +113,12 @@ public class CuentaEstudiante extends CuentaBancaria{
         return 0;
     }
 
-    public void actualizarCadastro(String nombreUniversidad, String fechaInicio, String curso, int nuevoPeriodo, boolean concluido){
+    public void actualizarCadastro(String nombreUniversidad, String fechaInicio, String curso, int nuevoPeriodo, boolean concluido, String empadronamiento){
         if(nuevoPeriodo>=11) {
             setStatus(false);
             System.out.println("------------------------------------------------------");
-            System.out.println("¡Has ultrapasado el tiempo limite para tener una cuenta Universitária!");
+            AlarmaInterfazEstudiante.limiteTiempo();
             System.out.println("Cuantía restante en la cuenta: " + getSueldo()+"€.");
-            System.out.println("Su cuenta ha sido cerrada automáticamente.");
 
         } else if (concluido){
             setStatus(false);
