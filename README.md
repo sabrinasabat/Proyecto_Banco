@@ -19,3 +19,6 @@ Cuenta de Estudiante:
   - Si el estudiante ha excedido el décimo período, lo que indica múltiples reprobaciones, se cerrará su cuenta de estudiante y se desactivarán sus beneficios. 
   - Solo se pueden realizar retiros de un máximo de 15€ al día. 
   - Al finalizar los estudios, la cuenta se cierra, pero en este caso se permite retirar todo el saldo, incluso si supiera los 15€. 
+
+Atención al cliente:
+- El cliente será atendido por un bot que tendrá opciones para elegir de preguntas. Este bot será capaz de responder a las consultas de los clientes, proporcionando informaciones sobre las diferentes cuentas, las vantajas de ellas, informaciones de tasas y etc. El objetivo es proporcionar un servicio al cliente eficiente y efectivo, mejorando así la experiencia del cliente con el banco.
