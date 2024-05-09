@@ -56,6 +56,12 @@ public class CuentaEstudiante extends CuentaBancaria implements AlarmaInterfazEs
     }
 
     // Overrides --------------------------------------------------------------------------------
+
+    @Override
+    public String toString(){
+        return String.format("=== Resumen de la cuenta: ===\nNúmero de la cuenta: %s\nTitular de la cuenta: %s\nFecha de apertura de la cuenta: %s\nNombre de la universidad: %s\n", this.getNumCuenta(), this.getTitularCuenta(), this.getFechaApertura(), this.getNombreUniversidad());
+
+    }
     @Override
     public void estadoActual(){
         if(getStatus()){
@@ -74,32 +80,34 @@ public class CuentaEstudiante extends CuentaBancaria implements AlarmaInterfazEs
     }
 
     @Override
-    public void ingresarDinero(float valorCash){
+    public boolean ingresarDinero(float valorCash){
         if(this.getStatus()){
             this.setSueldo(this.getSueldo()+valorCash);
             System.out.println("------------------------------------------------------");
             System.out.println("Dinero ingresado en la Cuenta Estudiante de "+ this.getTitularCuenta()+".");
             System.out.println("Sueldo actual: "+this.getSueldo());
+            return true;
         } else {
             System.out.println("------------------------------------------------------");
             System.out.println("¡E R R O R!");
             System.out.println("Tienes que abrir una cuenta primero.");
+            return false;
         }
     }
 
     @Override
-    public float sacarDinero(float valorCashout){
+    public boolean sacarDinero(float valorCashout){
         if (getStatus()) {
             if (this.getSueldo() >= valorCashout && valorCashout <= 15) {
                 this.setSueldo(this.getSueldo() - valorCashout);
                 System.out.println("------------------------------------------------------");
                 System.out.println("Dinero sacado de la Cuenta Estudiante de " + this.getTitularCuenta() + ".");
-                System.out.println("Sueldo actual: " + this.getSueldo()+"€.");
-                return valorCashout;
+                System.out.printf("Sueldo: %.2f€.                           %n", this.getSueldo());
+                return true;
             } else if (valorCashout>this.getSueldo()) {
                 System.out.println("------------------------------------------------------");
                 System.out.println("Sueldo insuficiente.");
-                System.out.println("Sueldo actual: " + this.getSueldo() + "€.");
+                System.out.printf("Sueldo: %.2f€.                           %n", this.getSueldo());
 
             } else {
                 AlarmaInterfazEstudiante.limiteCashout();
@@ -107,10 +115,10 @@ public class CuentaEstudiante extends CuentaBancaria implements AlarmaInterfazEs
         } else {
             if(getSueldo()>=valorCashout){
                 setSueldo(getSueldo()-valorCashout);
-                return valorCashout;
+                return true;
             }
         }
-        return 0;
+        return false;
     }
 
     public void actualizarCadastro(String nombreUniversidad, String fechaInicio, String curso, int nuevoPeriodo, boolean concluido, String empadronamiento){
@@ -118,7 +126,7 @@ public class CuentaEstudiante extends CuentaBancaria implements AlarmaInterfazEs
             setStatus(false);
             System.out.println("------------------------------------------------------");
             AlarmaInterfazEstudiante.limiteTiempo();
-            System.out.println("Cuantía restante en la cuenta: " + getSueldo()+"€.");
+            System.out.printf("Cuantía restante en la cuenta: %.2f€.                           %n", this.getSueldo());
 
         } else if (concluido){
             setStatus(false);

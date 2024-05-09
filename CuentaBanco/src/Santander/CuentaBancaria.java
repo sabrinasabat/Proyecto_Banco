@@ -26,9 +26,9 @@ public abstract class CuentaBancaria {
     // ----------------------------------------------------------------------------------- //
     public abstract void estadoActual();
 
-    public abstract void ingresarDinero(float valorCash);
+    public abstract boolean ingresarDinero(float valorCash);
 
-    public abstract float sacarDinero(float valorCashout);
+    public abstract boolean sacarDinero(float valorCashout);
 
     // ----------------------------------------------------------------------------------- //
 

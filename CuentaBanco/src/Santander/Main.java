@@ -5,6 +5,8 @@ import java.time.temporal.ChronoUnit;
 public class Main {
     public static void main(String[] args){
 
+        HistoricoSantander historial = new HistoricoSantander();
+
         // teste cuenta ahorro
         // Sacar (cantidad mayor que el sueldo), ingresar, status de la cuenta, rendimiento y simulación de rendimiento
         CuentaAhorro persona1 = new CuentaAhorro("Vitor Aguiar Lopez","02/10/1998", 10000, "4578632H", "jddodjfs!");
@@ -44,6 +46,24 @@ public class Main {
         persona3.actualizarCadastro("UIV", "10/10/1990", "Direito", 20, false, "sldjhasdj");
 
 
+        System.out.println(persona3);
+        System.out.println(persona2);
+        System.out.println(persona1);
+
+        CuentaCorriente persona4 = new CuentaCorriente("Sabrina Sabat", "05/11/2020", 55087, "18555698N", "dkashbakjns");
+
+
+        Transferencia t1 = new Transferencia();
+        if(t1.transferirCash(persona2, persona4, "09/05/2024", 500)){
+            historial.inserirTranferencia(t1);
+        }
+
+        Transferencia t2 = new Transferencia();
+        if(t2.transferirCash(persona4, persona2, "15/01/2005", 100)){
+            historial.inserirTranferencia(t2);
+        }
+
+        historial.ensenaHistorial();
 
 
 

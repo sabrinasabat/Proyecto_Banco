@@ -22,6 +22,11 @@ public class CuentaAhorro extends CuentaBancaria{
 
     // Overrides --------------------------------------------------------------------------------
     @Override
+    public String toString() {
+        return String.format("=== Resumen de la cuenta: ===\nNúmero de la cuenta: %s\nTitular de la cuenta: %s\nFecha de apertura de la cuenta: %s\n", this.getNumCuenta(), this.getTitularCuenta(), this.getFechaApertura());
+    }
+
+    @Override
     public void estadoActual(){
         System.out.println("------------------------------------------------------");
         if(getStatus()){
@@ -30,7 +35,7 @@ public class CuentaAhorro extends CuentaBancaria{
             System.out.println("|   Titular de la Cuenta: "+ this.getTitularCuenta()+"                 |");
             System.out.println("|   Fecha de Apertura de la Cuenta: "+ this.getFechaApertura()+"  |");
             System.out.println("|   Tasa de rendimiento: "+ this.getRendimiento()+"                   |");
-            System.out.println("|   Sueldo: "+ this.getSueldo()+"€.                            |");
+            System.out.printf("|   Sueldo: %.2f€.                           |%n", this.getSueldo());
             System.out.println("|_______________________________________________|");
 
         } else {
@@ -39,34 +44,37 @@ public class CuentaAhorro extends CuentaBancaria{
     }
 
     @Override
-    public void ingresarDinero(float valorCash){
+    public boolean ingresarDinero(float valorCash){
         System.out.println("------------------------------------------------------");
         if(this.getStatus()){
             this.setSueldo(this.getSueldo()+valorCash);
             System.out.println("Dinero ingresado en la Cuenta Ahorro de "+ this.getTitularCuenta());
+            return true;
         } else {
             System.out.println("¡E R R O R!");
             System.out.println("Tienes que abrir una cuenta primero.");
+            return false;
         }
     }
 
     @Override
-    public float sacarDinero(float valorCashout){
+    public boolean sacarDinero(float valorCashout){
         System.out.println("------------------------------------------------------");
         if(this.getStatus()){
             if(this.getSueldo()>=valorCashout){
                 this.setSueldo(this.getSueldo()-valorCashout);
                 System.out.println("Dinero sacado de la Cuenta Ahorro de "+ this.getTitularCuenta()+".");
-                System.out.println("Sueldo actual: "+ this.getSueldo());
-                return valorCashout;
+                System.out.printf("Sueldo: %.2f€.                           %n", this.getSueldo());
+                return true;
             }
             System.out.println("Sueldo insuficiente.");
-            System.out.println("Sueldo actual: "+this.getSueldo()+"€.");
+            System.out.printf("Sueldo: %.2f€.                           %n", this.getSueldo());
         }
-        return 0;
+        return false;
     }
 
     // método de rendimiento
+    // Polimorfismo
     public float generadorRendimiento(){
         System.out.println("------------------------------------------------------");
         float result = 0;

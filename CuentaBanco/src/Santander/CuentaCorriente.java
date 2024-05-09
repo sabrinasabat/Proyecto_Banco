@@ -30,33 +30,40 @@ public class CuentaCorriente extends CuentaBancaria{
     }
     // overrides --------------------------------------------------------------------------
     @Override
+    public String toString() {
+        return String.format("=== Resumen de la cuenta: ===\nNúmero de la cuenta: %s\nTitular de la cuenta: %s\nFecha de apertura de la cuenta: %s\nAnuidad: %s\n", this.getNumCuenta(), this.getTitularCuenta(), this.getFechaApertura(), this.getAnuidad());
+    }
+
+    @Override
     public void estadoActual(){
         System.out.println("------------------------------------------------------");
         System.out.println("===           Estado de la cuenta:           ===");
         System.out.println("|   Número de la cuenta: " + this.getNumCuenta()+"                 |");
         System.out.println("|   Titular de la Cuenta: "+ this.getTitularCuenta()+"              |");
         System.out.println("|   Fecha de Apertura de la Cuenta: "+ this.getFechaApertura()+"  |");
-        System.out.println("|   Sueldo: "+ this.getSueldo()+"€.                            |");
+        System.out.printf("|   Sueldo: %.2f€.                           |%n", this.getSueldo());
         System.out.println("|_______________________________________________|");
 
     }
 
     @Override
-    public void ingresarDinero(float valorCash){
+    public boolean ingresarDinero(float valorCash){
         if(this.getStatus()){
             this.setSueldo(this.getSueldo()+valorCash);
             System.out.println("------------------------------------------------------");
             System.out.println("Dinero ingresado en la Cuenta Corriente de "+ this.getTitularCuenta()+".");
-            System.out.println("Sueldo actual: "+this.getSueldo());
+            System.out.printf("Sueldo: %.2f€.                           %n", this.getSueldo());
+            return true;
         } else {
             System.out.println("------------------------------------------------------");
             System.out.println("¡E R R O R!");
             System.out.println("Tienes que abrir una cuenta primero.");
+            return false;
         }
     }
 
     @Override
-    public float sacarDinero(float valorCashout){
+    public boolean sacarDinero(float valorCashout){
         float tasa = 2.30f;
         if(this.getStatus()) {
             if (this.getSueldo() >= valorCashout) {
@@ -64,13 +71,13 @@ public class CuentaCorriente extends CuentaBancaria{
                 System.out.println("------------------------------------------------------");
                 System.out.println("Dinero sacado de la Cuenta Corriente de " + this.getTitularCuenta() + ".");
                 System.out.println("Sueldo actual: " + this.getSueldo()+"€.");
-                return valorCashout-tasa;
+                return true;
             }
             System.out.println("------------------------------------------------------");
             System.out.println("Sueldo insuficiente.");
             System.out.println("Sueldo actual: " + this.getSueldo() + "€.");
         }
-        return 0;
+        return false;
     }
 
     public void pagarAnuidad(){
