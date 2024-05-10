@@ -25,9 +25,9 @@ Atención al cliente:
 - El cliente será atendido por un bot que tendrá opciones para elegir de preguntas. Este bot será capaz de responder a las consultas de los clientes, proporcionando informaciones sobre las diferentes cuentas, las vantajas de ellas, informaciones de tasas y etc. El objetivo es proporcionar un servicio al cliente eficiente y efectivo, mejorando así la experiencia del cliente con el banco.
 
 Transferencias:
-- Los clientes deben poder hacer transferencias entre cuentas. Pero sólo se podrá entre Cuentas Corrientes.
+- Los clientes tendrán la capacidad de realizar transferencias de fondos entre cuentas. Sin embargo, estas transferencias sólo serán posibles entre Cuentas Corrientes.
 
 Histórico Santander:
-- Esta será el histórico de transferencias que los clientes hicieron, pero del propio banco, o sea, la visualización no es a nivel de clientes pero a control del banco.
+- Este será un registro de todas las transferencias realizadas por los clientes del banco. Aunque este registro no estará disponible para la visualización de los clientes, el banco podrá acceder a él para su control y gestión.
 
 
